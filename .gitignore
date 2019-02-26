@@ -12,5 +12,5 @@ dist/*
 checkpoint
 htmlcov
 mnist
-data/*
-file
+./data/*
+./file
