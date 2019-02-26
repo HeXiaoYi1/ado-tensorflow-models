@@ -54,6 +54,19 @@ def model_fn(features, labels, mode, params: dict):
         )
         return estimator_spec
 
+    # if mode == tf.estimator.ModeKeys.PREDICT:
+    #     logits = model(image, training=False)
+    #     predictions = {
+    #         'classes': tf.argmax(logits, axis=1),
+    #         'probabilities': tf.nn.softmax(logits),
+    #     }
+    #     return tf.estimator.EstimatorSpec(
+    #         mode=tf.estimator.ModeKeys.PREDICT,
+    #         predictions=predictions,
+    #         export_outputs={
+    #             'classify': tf.estimator.export.PredictOutput(predictions)
+    #         })
+
     pred_class = tf.argmax(logits, axis=1)
     loss_op = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(
         labels=labels,
