@@ -56,9 +56,9 @@ def load_config(params: dict):
     params['dropout'] = 0.5
     params['num_class'] = 2
 
-    params['data_dir'] = 'data'
+    params['data_dir'] = './data'
     params['model_dir'] = 'file'
-    params['vocab_file'] = 'data/vocab.txt'
+    params['vocab_file'] = './data/vocab.txt'
     params['feature_name'] = 'input'
     params['batch_size'] = 32
     params['max_steps'] = 1000
