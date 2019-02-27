@@ -32,11 +32,11 @@ def run():
         throttle_secs=params.get('throttle_secs'),
     )
 
-    # tf.estimator.train_and_evaluate(
-    #     estimator=estimator,
-    #     train_spec=train_spec,
-    #     eval_spec=eval_spec
-    # )
+    tf.estimator.train_and_evaluate(
+        estimator=estimator,
+        train_spec=train_spec,
+        eval_spec=eval_spec
+    )
 
     predictions = estimator.predict(
         input_fn=lambda: input.input_fn(mode=tf.estimator.ModeKeys.PREDICT, vocabs=params.get('vocabs')),
@@ -55,6 +55,7 @@ def load_config(params: dict):
     params['sequence_max_length'] = 25
     params['dropout'] = 0.5
     params['num_class'] = 3
+    params['use_highway'] = True
 
     params['data_dir'] = '../data'
     params['model_dir'] = 'file'

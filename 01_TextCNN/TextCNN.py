@@ -1,6 +1,7 @@
 # -*- coding:utf-8 -*-
 # author: adowu
 import tensorflow as tf
+from Highway_networks import highwayNet
 
 
 def textCNNNet(features, params: dict, is_training):
@@ -30,10 +31,13 @@ def textCNNNet(features, params: dict, is_training):
             pools.append(pool)
 
         h_pool = tf.concat(pools, axis=3)
-        h_pool = tf.reshape(h_pool, [-1, params.get('filters') * len(params.get('kernels'))])
+        total_filters = params.get('filters') * len(params.get('kernels'))
+        h_pool = tf.reshape(h_pool, [-1, total_filters])
         if is_training:
             h_pool = tf.layers.dropout(h_pool, rate=params.get('dropout'))
-
+        if params.get('use_highway', False):
+            #   considering add HighwayNet
+            h_pool = highwayNet(h_pool, total_filters)
         logits = tf.layers.dense(h_pool, params.get('num_class'))
 
         return logits
