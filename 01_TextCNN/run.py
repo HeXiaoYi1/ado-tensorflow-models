@@ -32,36 +32,36 @@ def run():
         throttle_secs=params.get('throttle_secs'),
     )
 
-    tf.estimator.train_and_evaluate(
-        estimator=estimator,
-        train_spec=train_spec,
-        eval_spec=eval_spec
-    )
+    # tf.estimator.train_and_evaluate(
+    #     estimator=estimator,
+    #     train_spec=train_spec,
+    #     eval_spec=eval_spec
+    # )
 
     predictions = estimator.predict(
         input_fn=lambda: input.input_fn(mode=tf.estimator.ModeKeys.PREDICT, vocabs=params.get('vocabs')),
     )
 
     for index, prediction in enumerate(predictions):
-        print('label1 {} : label2 {}'.format(prediction[0], prediction[1]))
+        print('index {} : prediction {}'.format(index, prediction))
 
 
 def load_config(params: dict):
-    params['vocab_size'] = 10000
-    params['embedding_size'] = 128
-    params['learning_rate'] = 1e-3
+    params['vocab_size'] = 3500
+    params['embedding_size'] = 256
+    params['learning_rate'] = 1e-2
     params['kernels'] = [3, 4, 5]
-    params['filters'] = 128
-    params['sequence_max_length'] = 30
+    params['filters'] = 64
+    params['sequence_max_length'] = 25
     params['dropout'] = 0.5
-    params['num_class'] = 2
+    params['num_class'] = 3
 
-    params['data_dir'] = './data'
+    params['data_dir'] = '../data'
     params['model_dir'] = 'file'
-    params['vocab_file'] = './data/vocab.txt'
+    params['vocab_file'] = '../data/vocab.txt'
     params['feature_name'] = 'input'
     params['batch_size'] = 32
-    params['max_steps'] = 1000
+    params['max_steps'] = 200
     params['log_level'] = 'info'
 
     params['gpu_cores'] = '1'
@@ -72,7 +72,7 @@ def load_config(params: dict):
     params['save_checkpoints_steps'] = 100
     params['keep_checkpoint_max'] = 3
     params['log_step_count_steps'] = 100
-    params['throttle_secs'] = 10
+    params['throttle_secs'] = 30
 
 
 def load_sess_config(params):
@@ -123,5 +123,51 @@ def enrich_params(params):
                 break
     params['vocabs'] = vocabs
 
+
+def vocabs_store():
+    import jieba
+    import pandas as pd
+
+    import os
+    vocabs = dict()
+    for dirpath,_,filenames in os.walk('../data/train/'):
+        for filename in filenames:
+            p = os.path.join(dirpath, filename)
+            print(p)
+            f = open(p, 'r', encoding='utf-8')
+            for line in f:
+                j = jieba.cut(line)
+                for word in j:
+                    if word not in vocabs:
+                        vocabs[word] = 1
+                    else:
+                        vocabs[word] += 1
+    ordered = sorted(vocabs.items(), key=lambda x: x[1], reverse=True)
+
+    out = open('../data/vocab.txt', 'w', encoding='utf-8')
+
+    for word, count in ordered:
+        out.writelines(str(word))
+        out.writelines('\t')
+        out.writelines(str(count))
+        out.writelines('\n')
+
+    print('finished!')
+
+
+def filter_content():
+    infile = open('../data/train/zdsx_title_train.txt', encoding='utf-8')
+    out = open('../data/train/zdsx_title_format_train.txt', 'w', encoding='utf-8')
+
+    for line in infile:
+        out.writelines(line.strip())
+        out.writelines('\t\t')
+        out.writelines('2')
+        out.writelines('\n')
+
+
 if __name__ == '__main__':
     run()
+    # filter_content()
+    #
+    # vocabs_store()

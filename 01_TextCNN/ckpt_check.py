@@ -1,4 +1,4 @@
-#-*- coding:utf-8 -*-
+# -*- coding:utf-8 -*-
 # author: adowu
 
 from tensorflow.python.tools import inspect_checkpoint as chkp
