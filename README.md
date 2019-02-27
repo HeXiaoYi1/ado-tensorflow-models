@@ -11,6 +11,7 @@ Tensorflow >= 1.8
 
 # 已完成
 ## TextCNN
-[原论文地址](https://arxiv.org/abs/1408.5882)
+[Convolutional Neural Networks for Sentence Classification](https://arxiv.org/abs/1408.5882)
+
 应用的场景是餐饮评价类语料的三分类任务
 注意： 遇到loss越来越大的问题，已解决
