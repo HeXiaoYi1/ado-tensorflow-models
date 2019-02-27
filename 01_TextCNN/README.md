@@ -21,4 +21,9 @@ dataset 操作文件
 
 ---
 
+[Highway_networks.py](https://github.com/adowu/ado-tensorflow-models/blob/master/01_TextCNN/Highway_networks.py)
+新增highway 结构到CNN中
+
+---
+
 注意： 遇到loss越来越大的问题，已解决
