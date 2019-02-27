@@ -13,5 +13,5 @@ Tensorflow >= 1.8
 # 已完成
 ## [TextCNN](https://github.com/adowu/ado-tensorflow-models/tree/master/01_TextCNN)
 [Convolutional Neural Networks for Sentence Classification](https://arxiv.org/abs/1408.5882)  
-[Highway Networks](https://arxiv.org/abs/1505.00387)
+[Highway Networks](https://arxiv.org/abs/1505.00387)  
 应用的场景是餐饮评价类语料的三分类任务

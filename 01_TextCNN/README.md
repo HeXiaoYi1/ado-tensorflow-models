@@ -15,7 +15,7 @@ dataset 操作文件
 模型参数检查文件
 
 ---
-20190227
+20190227  
 [Highway_networks.py](https://github.com/adowu/ado-tensorflow-models/blob/master/01_TextCNN/Highway_networks.py)  
 新增highway 结构到CNN中
 
