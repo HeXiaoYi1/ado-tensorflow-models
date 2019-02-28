@@ -171,5 +171,4 @@ def filter_content():
 if __name__ == '__main__':
     run()
     # filter_content()
-    #
     # vocabs_store()

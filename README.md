@@ -10,6 +10,7 @@ Python 3
 
 Tensorflow >= 1.8
 
+
 # 已完成
 ## [TextCNN](https://github.com/adowu/ado-tensorflow-models/tree/master/01_TextCNN)  
 相关论文地址：  
@@ -19,6 +20,6 @@ Tensorflow >= 1.8
 
 ##  [TextRNN](https://github.com/adowu/ado-tensorflow-models/tree/master/02_TextRNN) 
 相关论文地址：  
-[Recurrent Neural Network for Text Classification with Multi-Task Learning](https://arxiv.org/abs/1605.05101v1)   
-
+[Recurrent Neural Network for Text Classification with Multi-Task Learning](https://arxiv.org/abs/1605.05101v1)     
+应用的场景是餐饮评价类语料的三分类任务
 
