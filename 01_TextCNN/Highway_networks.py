@@ -31,7 +31,7 @@ def highwayNet(feature, output_size, num_layer=2, bias=-1.0):
                          shape=(2, 8), dtype=float32)
                          
             初始化的bias定义为 negative，论文中给的是 -1 -3等，从上面输出也能看出，在前期网络更侧重于搬运行为，
-            T 越小 1 - T 就越大
+            T 越小 1 - T 就越大，也就是 C 越大
         """
         C = tf.subtract(1., T, name='carry_gate')
         output = H * T + C * output

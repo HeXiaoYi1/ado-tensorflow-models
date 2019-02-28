@@ -50,8 +50,9 @@ def model_fn(features, labels, mode, params: dict):
     x = tf.nn.embedding_lookup(embeddings, x)
 
     logits = textCNNNet(x, params, mode == tf.estimator.ModeKeys.TRAIN)
+
     probs = tf.nn.softmax(logits)
-    predictions = tf.argmax(logits, axis=1, name='predictions')
+    predictions = tf.argmax(probs, axis=1, name='predictions')
     output = {
         'predictions': predictions,
         'probabilities': probs
