@@ -23,3 +23,6 @@ Tensorflow >= 1.8
 [Recurrent Neural Network for Text Classification with Multi-Task Learning](https://arxiv.org/abs/1605.05101v1)     
 应用的场景是餐饮评价类语料的三分类任务
 
+## AllRNN
+[basic_rnn](https://github.com/adowu/ado-tensorflow-models/blob/master/03_AllRNN/basic_rnn_demo.py)
+
