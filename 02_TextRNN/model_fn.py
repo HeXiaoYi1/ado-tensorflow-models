@@ -40,3 +40,9 @@ def model_fn(features, labels, mode, params: dict):
     )
 
 
+    # if __name__ == '__main__':
+    #     tf.enable_eager_execution()
+    #     a = tf.random_normal(shape=[2,4])
+    #     print(a)
+    #     print(tf.argmax(a))
+    #     print(tf.argmax(a, axis=1))
