@@ -4,6 +4,7 @@ import tensorflow as tf
 
 tf.enable_eager_execution()
 
+
 def basic_rnn_demo():
     """
     Most basic rnn
@@ -25,7 +26,6 @@ def basic_rnn_demo():
     output,output = tanh(c)
     """
 
-
     cell = tf.nn.rnn_cell.BasicRNNCell(num_units=4)
     zero_state = cell.zero_state(batch_size=2, dtype=tf.float32)
     a = tf.random_normal([2, 3, 4])
@@ -46,6 +46,8 @@ def basic_rnn_demo():
     [[ 0.9750985  -0.40439364  0.9770327   0.8529797 ]
      [ 0.4485007  -0.51780844 -0.6015551   0.16041796]], shape=(2, 4), dtype=float32)
     """
+    #   output shape = [2,3,4] 表示的是每个时间步的输出
+    #   state shape = [2, 4] 表示最后的状态输出
     out, state = tf.nn.dynamic_rnn(
         cell=cell,
         initial_state=zero_state,
