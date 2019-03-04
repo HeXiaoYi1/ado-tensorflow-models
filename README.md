@@ -26,3 +26,4 @@ Tensorflow >= 1.8
 ## AllRNN
 [basic_rnn](https://github.com/adowu/ado-tensorflow-models/blob/master/03_AllRNN/basic_rnn_demo.py)
 [basic_lstm](https://github.com/adowu/ado-tensorflow-models/blob/master/03_AllRNN/basic_lstm_demo.py)
+[multi_lstm](https://github.com/adowu/ado-tensorflow-models/blob/master/03_AllRNN/multi_rnn_demo.py)

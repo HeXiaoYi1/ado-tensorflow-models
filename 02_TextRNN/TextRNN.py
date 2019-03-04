@@ -7,12 +7,12 @@ class TextRNNLayer(tf.layers.Layer):
     def __init__(self, hidden_size, dropout):
         super(TextRNNLayer, self).__init__()
 
+
         self.fw_cell = tf.nn.rnn_cell.LSTMCell(num_units=hidden_size)
         self.bw_cell = tf.nn.rnn_cell.LSTMCell(num_units=hidden_size)
-
         if dropout is not None:
-            self.fw_cell = tf.nn.rnn_cell.DropoutWrapper(cell=self.fw_cell, output_keep_prob=dropout)
-            self.bw_cell = tf.nn.rnn_cell.DropoutWrapper(cell=self.bw_cell, output_keep_prob=dropout)
+            self.fw_cell = tf.nn.rnn_cell.DropoutWrapper(cell=self.fw_cell, input_keep_prob=dropout)
+            self.bw_cell = tf.nn.rnn_cell.DropoutWrapper(cell=self.bw_cell, input_keep_prob=dropout)
 
         self.initializer = tf.random_normal_initializer(stddev=0.1)
 
