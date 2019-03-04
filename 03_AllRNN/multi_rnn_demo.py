@@ -5,7 +5,7 @@ import tensorflow as tf
 tf.enable_eager_execution()
 
 
-def multi_cnn_demo():
+def multi_rnn_demo():
     #   cell = tf.nn.rnn_cell.BasicRNNCell(num_units=6)
     #   m_cell = tf.nn.rnn_cell.MultiRNNCell([cell] * 3)
     #   这样定义的话是错误的，相当于是用一个cell，这样在第一层的时候，输入是[2,4](这时候的kernel_=[10,6])，输出是[2,6]
@@ -56,6 +56,38 @@ def multi_cnn_demo():
     print(states)
 
 
+def multi_rnn_demo_02():
+    m_cell = tf.nn.rnn_cell.MultiRNNCell([tf.nn.rnn_cell.BasicRNNCell(num_units=3 * i) for i in range(1, 5)])
+    wrapper = tf.nn.rnn_cell.DropoutWrapper(m_cell, input_keep_prob=0.5, output_keep_prob=0.8)
+    a = tf.random_normal([2, 3, 4])
+    state = m_cell.zero_state(2, tf.float32)
+    output, state = tf.nn.dynamic_rnn(wrapper, a, initial_state=state, time_major=False)
+    print(output)
+    """
+    (
+    <tf.Tensor: id=324, shape=(2, 3), dtype=float32, numpy=
+        array([[ 0.04508227, -0.23633523,  0.30065763],
+                [ 0.7612733 , -0.52450776, -0.6661888 ]], dtype=float32)>, 
+    <tf.Tensor: id=331, shape=(2, 6), dtype=float32, numpy=
+        array([[ 0.54584306, -0.17747684, -0.44227242,  0.2842951 ,  0.43393528,-0.63828385],
+               [-0.5828087 , -0.5281809 ,  0.06895413, -0.74510646, -0.53972644,
+                 0.15232728]], dtype=float32)>, 
+    <tf.Tensor: id=338, shape=(2, 9), dtype=float32, numpy=
+        array([[ 0.5603744 , -0.04951737, -0.26185265,  0.08209028,  0.672668  ,
+                0.18829748,  0.27329427,  0.4323986 ,  0.09414196],
+            [ 0.03460297, -0.20349553,  0.47373882,  0.09012283,  0.02843269,
+            -0.6374881 , -0.10102204, -0.16552992,  0.35916832]],dtype=float32)>, 
+    <tf.Tensor: id=345, shape=(2, 12), dtype=float32, numpy=
+            array([[ 0.0955615 , -0.17922615, -0.3616308 ,  0.23105423, -0.12791048,
+                     0.12003306,  0.07470868, -0.50892484,  0.04814089, -0.22584775,
+                     0.48966137, -0.0903751 ],
+                   [-0.1615388 , -0.00884357,  0.03238142,  0.1927497 ,  0.18858932,
+                     0.09198219, -0.04517724, -0.00153504,  0.00972735, -0.35469332,
+                     0.25491163,  0.24003494]], dtype=float32)>)
+    """
+    print(state)
+
+
 def dropout_test():
     """
     tf.Tensor(
@@ -74,4 +106,4 @@ def dropout_test():
 
 
 if __name__ == '__main__':
-    multi_cnn_demo()
+    multi_rnn_demo_02()

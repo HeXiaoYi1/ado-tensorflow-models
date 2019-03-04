@@ -5,6 +5,8 @@ ado-tensorflow-models
 在coding中对于自己发现的不清楚的希望一直能增加详细的注释说明。
 
 由于个人经验得欠缺有不对的，还希望留言指出，谢谢。
+
+针对绝大部分的模型或者框架，会在CSDN上做一个简要的说明，也可移步查阅。[传送门CSDN](https://blog.csdn.net/WUUUSHAO)
 ## Requirements
 Python 3
 
