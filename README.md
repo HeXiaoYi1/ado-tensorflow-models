@@ -31,5 +31,5 @@ Tensorflow >= 1.8
 03. [multi_rnn](https://github.com/adowu/ado-tensorflow-models/blob/master/03_AllRNN/multi_rnn_demo.py)，相关的论文[RECURRENT NEURAL NETWORK REGULARIZATION](https://arxiv.org/pdf/1409.2329.pdf)
 
 ##  [Attention](https://github.com/adowu/ado-tensorflow-models/tree/master/04_AttentionRNN)   
-[BahdanauAttention](https://arxiv.org/abs/1409.0473) 
-[LuongAttention](https://arxiv.org/abs/1508.04025)
+01. [BahdanauAttention](https://arxiv.org/abs/1409.0473) 
+02. [LuongAttention](https://arxiv.org/abs/1508.04025)
