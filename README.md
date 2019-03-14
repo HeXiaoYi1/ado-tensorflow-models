@@ -33,3 +33,6 @@ Tensorflow >= 1.8
 ##  [Attention](https://github.com/adowu/ado-tensorflow-models/tree/master/04_AttentionRNN)   
 01. [BahdanauAttention](https://arxiv.org/abs/1409.0473) 
 02. [LuongAttention](https://arxiv.org/abs/1508.04025)
+
+##  [LinearRegression](https://github.com/adowu/ado-tensorflow-models/tree/master/08_LinearRegression)
+
