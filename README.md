@@ -35,4 +35,4 @@ Tensorflow >= 1.8
 02. [LuongAttention](https://arxiv.org/abs/1508.04025)
 
 ##  [LinearRegression](https://github.com/adowu/ado-tensorflow-models/tree/master/08_LinearRegression)
-
+五个维度的输入作为X
