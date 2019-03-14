@@ -50,7 +50,9 @@ def attention(inputs, hidden_size, dropout, attention_size):
     #   multiply is [batch_size, sequence_length, 2 * hidden_size] * [batch_size, sequence_length, 1]
     #   multiply = [batch_size, sequence_length, 2 * hidden_size]
     #   reduce_sum = [batch_size, 2 * hidden_size]
+    tmp = tf.multiply(output, tf.expand_dims(A, -1))
     C = tf.reduce_sum(tf.multiply(output, tf.expand_dims(A, -1)), axis=1)
+    # C = tf.reduce_mean(tf.multiply(output, tf.expand_dims(A, -1)), axis=1)
 
     """
     A
